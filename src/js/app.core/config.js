@@ -1,10 +1,10 @@
 
 function config ($urlRouterProvider, $stateProvider, BackandProvider) {
 
-  // BackandProvider
-  //   .setSignUpToken('05bda5b9-7f6b-4975-8fbe-60110e023e75')
-  //   .setAppName('twitterticker')
-  // ;
+  BackandProvider
+    .setSignUpToken('05bda5b9-7f6b-4975-8fbe-60110e023e75')
+    .setAppName('twitterticker')
+  ;
 
  $urlRouterProvider.otherwise('/'); // Default page if no state matched
 
@@ -12,15 +12,12 @@ function config ($urlRouterProvider, $stateProvider, BackandProvider) {
   .state('root', {
     abstract: true,
     templateUrl: 'templates/layout.tpl.html',
-    controller: 'RootController as vm'
+    controller: 'NavController as vm'
   })
-  // States for Items
   .state('root.home', {
     url: '/',
-    templateUrl: 'templates/home.tpl.html',
-    controller: ''
+    templateUrl: 'templates/home.tpl.html'
   })
-  // States for Users
   .state('root.login', {
     url: '/login',
     templateUrl: 'templates/login.tpl.html',

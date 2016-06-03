@@ -7,7 +7,15 @@ function RegisterController ( UserService ) {
   function addUser (user) {
     UserService.register(user).then( (res) => {
       console.log(res);
+
+      let user = {
+        name: res.fullName,
+        id: res.userId,
+        email: res.username
+      };
+      $cookies.putObject('user', user);
     });
+
   }
 
 

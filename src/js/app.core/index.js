@@ -6,22 +6,18 @@ import './vendors/backand';
 // Import Our Constants
 import { serverConstant } from './constants/server.constant';
 
-// Import Our Controllers
-import { RootController } from './controllers/root.controller';
 
-// Import Our Config
+// Import utility files
 import { config } from './config';
+import { run } from './run';
+
+// import controllers
+import { NavController } from './controllers/nav.controller';
 
 angular
   .module('app.core', ['ui.router', 'backand', 'ngCookies'])
   .config(config)
   .constant('SERVER', serverConstant)
-  .controller('RootController', RootController)
-  // .run(function ($rootScope, UserService) {
-  //
-  //   $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-  //     UserService.authenticate(toState.name);
-  //   });
-  //
-  // })
+  .run(run)
+  .controller('NavController', NavController)
 ;
