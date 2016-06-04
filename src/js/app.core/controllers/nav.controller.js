@@ -1,12 +1,13 @@
 
-function NavController (UserService) {
+function NavController ( UserService ) {
 
   let vm = this;
 
-  vm.logout = logout;
+  vm.logOut = logOut;
 
-  function logout () {
+  function logOut () {
     UserService.logout();
+    console.log("loggin out");
   }
 
 }
