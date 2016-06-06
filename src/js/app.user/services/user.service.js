@@ -4,6 +4,7 @@ function UserService ( Backand, $cookies, $state ) {
   this.login    = login;
   this.checkAuth = checkAuth;
   this.logout = logout;
+  this.getUserId = getUserId;
 
   function register ( user ) {
     return Backand.signup(
@@ -31,12 +32,20 @@ function UserService ( Backand, $cookies, $state ) {
   function checkAuth ( currentState ) {
 
     let user = $cookies.getObject('user');
-    if (user) {
+
+    if ( user ) {
       console.log('user is logged in');
+    } else if ( currentState === 'root.register' || currentState === 'root.home' || currentState === 'root.login' ){
     } else {
-      console.log('...redirecting to login page');
-      $state.go('root.login')
+      alert('please login or sign up to access other pages' );
+      $state.go('root.home')
     }
+
+  }
+
+  function getUserId () {
+    let user = $cookies.getObject('user');
+    return user.id;
   }
 
 }

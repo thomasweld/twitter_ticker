@@ -1,0 +1,33 @@
+
+<h1>Create Campaign</h1>
+
+<form ng-submit="vm.createNewCampaign(campaign)">
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.name" placeholder="Campaign Name">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.hashtag" placeholder="#Hashtag">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.location_address" placeholder="Address of Location">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.image_left" placeholder="Left Border Image URL">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.image_right" placeholder="Right Border Image URL">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.sponsor_logo" placeholder="Sponsor Logo URL">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.sponsor_message" placeholder="Sponsor Message">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.venue_logo" placeholder="Venue Logo URL">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="campaign.venue_message" placeholder="Venue Message">
+  </div>
+  <button class="btn btn-default">Submit</button>
+</form>

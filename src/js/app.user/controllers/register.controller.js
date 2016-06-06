@@ -16,6 +16,8 @@ function RegisterController ( UserService ) {
       $cookies.putObject('user', user);
     });
 
+    $state.go('root.home');
+
   }
 
 

@@ -28,6 +28,11 @@ function config ($urlRouterProvider, $stateProvider, BackandProvider) {
     templateUrl: 'templates/register.tpl.html',
     controller: 'RegisterController as vm'
   })
+  .state('root.newCampaign', {
+    url: '/new',
+    templateUrl: 'templates/newCampaign.tpl.html',
+    controller: 'NewCampaignController as vm'
+  })
  ;
 
 }

@@ -1,4 +1,4 @@
-function LoginController ( UserService, $cookies ) {
+function LoginController ( UserService, $cookies, $state ) {
 
   let vm = this;
 
@@ -15,9 +15,12 @@ function LoginController ( UserService, $cookies ) {
       };
       $cookies.putObject('user', user);
     });
+
+    $state.go('root.home');
+
   }
 
 }
 
-LoginController.$inject = [ 'UserService', '$cookies' ];
+LoginController.$inject = [ 'UserService', '$cookies', '$state' ];
 export { LoginController };
