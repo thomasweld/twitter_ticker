@@ -1,6 +1,11 @@
-function CampaignService ( $http, SERVER ) {
+function CampaignService ( $http, SERVER, GOOGLE ) {
 
   this.postNewCampaign = postNewCampaign;
+  this.getLocationCoords = getLocationCoords;
+
+  function getLocationCoords( campaign ) {
+    return $http.get(GOOGLE.URL + 'address=' + campaign.location_address + '&key=' + GOOGLE.KEY);
+  }
 
   function postNewCampaign (campaign) {
 
@@ -10,5 +15,5 @@ function CampaignService ( $http, SERVER ) {
 
 }
 
-CampaignService.$inject = [ '$http', 'SERVER' ];
+CampaignService.$inject = [ '$http', 'SERVER', 'GOOGLE' ];
 export { CampaignService };

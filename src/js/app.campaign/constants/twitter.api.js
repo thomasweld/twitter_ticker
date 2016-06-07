@@ -1,6 +1,6 @@
-let GOOGLE = {
-  URL: 'https://maps.googleapis.com/maps/api/geocode/json?',
-  KEY: 'AIzaSyDK6-pethKX9FvPnGSjsZz63_FRyKdK7Ck'
+let TWITTER = {
+  URL: '**********',
+  KEY: '**********'
 }
 
-export { GOOGLE }
+export { TWITTER }

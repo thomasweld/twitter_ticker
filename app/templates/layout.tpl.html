@@ -7,9 +7,9 @@
       <li><a href="/#/new">New Campaign</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/#/login">Login</a></li>
-      <li><a href="/#/register">Sign Up</a></li>
-      <li><a href="#" ng-click="vm.logOut()">Log Out</a></li>
+      <li ng-show="!vm.loggedIn()"><a href="/#/login">Login</a></li>
+      <li ng-show="!vm.loggedIn()"><a href="/#/register">Sign Up</a></li>
+      <li ng-show="vm.loggedIn()"><a href="#" ng-click="vm.logOut()">Log Out</a></li>
     </ul>
   </div>
 </nav>

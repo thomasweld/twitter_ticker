@@ -1,5 +1,5 @@
 
-function NewCampaignController ( CampaignService, UserService ) {
+function NewCampaignController ( CampaignService, UserService, $state ) {
 
   let vm = this;
 
@@ -8,28 +8,27 @@ function NewCampaignController ( CampaignService, UserService ) {
   function createNewCampaign ( campaign ) {
 
     // pass form data ( campaign ) to function that gets coordinates from Gmaps API
-
-    // .then
-
-    // campaign.coord = res.lat/long
-
-    //  CampaignService.postNewCampaign needs to be called within Coordinate function
-
-
-    ///////////////////////////////////////////
-
-
-    campaign.user = UserService.getUserId();
-    console.log(campaign.user);
-
-    CampaignService.postNewCampaign(campaign).then( (res) => {
+    CampaignService.getLocationCoords( campaign ).then ( (res) => {
       console.log(res);
-      console.log(res.config.data);
-      // $state.go('root.home');
+      // assign lat / long numbers to campaign attreibutes before posting to DB
+      campaign.neLat = res.data.results[0].geometry.viewport.northeast.lat;
+      campaign.neLng = res.data.results[0].geometry.viewport.northeast.lng;
+      campaign.swLat = res.data.results[0].geometry.viewport.southwest.lat;
+      campaign.swLng = res.data.results[0].geometry.viewport.southwest.lng;
+      // assign user to campaign before posting to DB
+      campaign.user = UserService.getUserId();
+      // send campaign to DB with new attributes
+      CampaignService.postNewCampaign(campaign).then( (res) => {
+        console.log(res);
+        $state.go('root.home');
+      });
+
     });
+
+
   }
 
 }
 
-NewCampaignController.$inject = ['CampaignService', 'UserService' ];
+NewCampaignController.$inject = ['CampaignService', 'UserService', '$state' ];
 export { NewCampaignController };
