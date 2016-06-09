@@ -1,4 +1,3 @@
-
 function NewCampaignController ( CampaignService, UserService, $state ) {
 
   let vm = this;

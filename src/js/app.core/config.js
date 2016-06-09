@@ -33,6 +33,16 @@ function config ($urlRouterProvider, $stateProvider, BackandProvider) {
     templateUrl: 'templates/newCampaign.tpl.html',
     controller: 'NewCampaignController as vm'
   })
+  .state('root.campaigns', {
+    url: '/campaigns',
+    templateUrl: 'templates/campaignsList.tpl.html',
+    controller: 'CampaignsController as vm'
+  })
+  .state('root.campaignDetails', {
+    url: '/campaigns/:campaignId',
+    templateUrl: 'templates/campaignDetails.tpl.html',
+    controller: 'SingleCampaignController as vm'
+  })
  ;
 
 }

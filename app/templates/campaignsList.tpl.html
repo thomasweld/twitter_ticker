@@ -1,0 +1,11 @@
+
+<h2>My Campaigns</h2>
+
+<ul>
+  <li ng-repeat="campaign in vm.campaignList  ">
+    <a href="/#/campaigns/{{ campaign.id }}">
+      {{ campaign.name }}
+    </a>
+  </li>
+
+</ul>
