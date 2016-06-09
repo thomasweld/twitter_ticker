@@ -41,7 +41,7 @@ function config ($urlRouterProvider, $stateProvider, BackandProvider) {
   .state('root.campaignDetails', {
     url: '/campaigns/:campaignId',
     templateUrl: 'templates/campaignDetails.tpl.html',
-    controller: 'SingleCampaignController as vm'
+    controller: 'ModeratorController as vm'
   })
  ;
 

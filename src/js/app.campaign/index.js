@@ -6,7 +6,7 @@ import { GOOGLE } from './constants/google.api';
 // Import Our Controllers
 import { NewCampaignController }   from './controllers/newCampaignController';
 import { CampaignsController }   from './controllers/CampaignsController';
-import { SingleCampaignController }   from './controllers/SingleCampaignController';
+import { ModeratorController }   from './controllers/ModeratorController';
 
 
 
@@ -18,7 +18,7 @@ angular
   .module('app.campaign', [])
   .controller('NewCampaignController', NewCampaignController)
   .controller('CampaignsController', CampaignsController)
-  .controller('SingleCampaignController', SingleCampaignController)
+  .controller('ModeratorController', ModeratorController)
   .constant('GOOGLE', GOOGLE)
   .service('CampaignService', CampaignService)
 ;

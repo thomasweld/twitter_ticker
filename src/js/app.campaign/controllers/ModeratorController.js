@@ -1,4 +1,4 @@
-function SingleCampaignController ( CampaignService, $stateParams ) {
+function ModeratorController ( CampaignService, $stateParams ) {
 
   let vm = this;
 
@@ -13,5 +13,5 @@ function SingleCampaignController ( CampaignService, $stateParams ) {
 
 }
 
-SingleCampaignController.$inject = [ 'CampaignService', '$stateParams' ];
-export { SingleCampaignController };
+ModeratorController.$inject = [ 'CampaignService', '$stateParams' ];
+export { ModeratorController };
