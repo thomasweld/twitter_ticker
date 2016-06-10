@@ -7,3 +7,39 @@ li {
   height: auto;
   margin: 1em;
 }
+
+// Marquee Style
+
+
+.streamProfilePic {
+  display: inline;
+  width: 80px;
+  height: auto;
+  margin: 1em;
+}
+
+.marquee-container {
+  padding:3px;
+  border:1px solid #e6e6e6;
+  width:700px;
+  overflow:hidden;
+}
+
+.marquee{
+  display:block;
+  position:relative;
+  width:800px;
+  height:160px;
+  animation:scroll 10s linear infinite;
+  padding:3px;
+  }
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+/* Makes text move */
+@keyframes scroll{
+0% {left:800px;}
+100% {left:-800px;}
+}

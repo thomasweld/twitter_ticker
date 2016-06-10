@@ -14,6 +14,17 @@
 
 <hr>
 
+<div class="row marquee-container">
+  <div class="col-sm-12 marquee">
+    <span ng-repeat="tweet in vm.moderatedTweetList">
+      <img src="{{ tweet.user.profile_image_url }}" alt="" class="streamProfilePic"/>
+      {{ tweet.user.name}} - {{ tweet.text }}
+    </span>
+  </div>
+</div>
+
+<hr>
+
 <div class="row">
   <div class="col-sm-6">
     <h4>Streaming Tweets List</h4>
