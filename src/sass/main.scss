@@ -10,7 +10,6 @@ li {
 
 // Marquee Style
 
-
 .streamProfilePic {
   display: inline;
   width: 80px;
@@ -21,25 +20,25 @@ li {
 .marquee-container {
   padding:3px;
   border:1px solid #e6e6e6;
-  width:700px;
+  width:100%;
   overflow:hidden;
 }
 
 .marquee{
   display:block;
   position:relative;
-  width:800px;
-  height:160px;
-  animation:scroll 10s linear infinite;
+  width:240%;
+  height:120px;
+  animation:scroll 6s linear infinite;
   padding:3px;
-  }
+}
 
 .marquee:hover {
-    animation-play-state: paused
+  animation-play-state: paused
 }
 
 /* Makes text move */
 @keyframes scroll{
-0% {left:800px;}
-100% {left:-800px;}
+0% {left:140%;}
+100% {left:-140%;}
 }
