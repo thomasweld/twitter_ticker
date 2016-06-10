@@ -14,9 +14,11 @@ function LoginController ( UserService, $cookies, $state ) {
         email: res.username
       };
       $cookies.putObject('user', user);
+
+      $state.go('root.home');
     });
 
-    $state.go('root.home');
+    
 
   }
 
