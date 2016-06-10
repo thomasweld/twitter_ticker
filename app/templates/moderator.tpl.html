@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>
+      Campaign Name: {{ vm.SingleCampaign.name }}
+    </h1>
+    <h3>
+      Hashtag: {{ vm.SingleCampaign.hashtag }}
+    </h3>
+    <p>
+      Address: {{ vm.SingleCampaign.location_address }}
+    </p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Streaming Tweets List</h4>
+    <ul>
+      <li ng-repeat="tweet in vm.sampleData">
+        <img src="{{ tweet.user.profile_image_url }}" alt="" class="twitterUserImage" />
+        {{ tweet.user.name}} - {{ tweet.text }}
+        <button ng-click="vm.addToModerated(tweet)" class="btn btn-default" type="button">Add to ticker</button>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <h4>Moderated Tweet List</h4>
+    <ul>
+      <li ng-repeat="tweet in vm.moderatedTweetList">
+        <img src="{{ tweet.user.profile_image_url }}" alt="" class="twitterUserImage" />
+        {{ tweet.user.name}} - {{ tweet.text }}
+        <button ng-click="vm.addToModerated(tweet)" class="btn btn-default" type="button">Add to ticker</button>
+      </li>
+    </ul>
+  </div>
+</div>

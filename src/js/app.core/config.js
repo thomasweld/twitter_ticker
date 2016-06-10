@@ -38,9 +38,9 @@ function config ($urlRouterProvider, $stateProvider, BackandProvider) {
     templateUrl: 'templates/campaignsList.tpl.html',
     controller: 'CampaignsController as vm'
   })
-  .state('root.campaignDetails', {
+  .state('root.moderator', {
     url: '/campaigns/:campaignId',
-    templateUrl: 'templates/campaignDetails.tpl.html',
+    templateUrl: 'templates/moderator.tpl.html',
     controller: 'ModeratorController as vm'
   })
  ;
