@@ -1,0 +1,21 @@
+
+
+<!-- <div class="video">
+
+</div>
+
+<div class="row marquee-container">
+  <div class="col-sm-12 marquee">
+    <span ng-repeat="tweet in vm.moderatedTweetList">
+      <img src="{{ tweet.user.profile_image_url }}" alt="" class="streamProfilePic"/>
+      {{ tweet.user.name}} - {{ tweet.text }}
+    </span>
+  </div>
+</div> -->
+
+
+<ul>
+  <li ng-repeat="tweet in vm.tweets">
+    {{ tweet.text }} - @{{ tweet.user.screen_name }}
+  </li>
+</ul>

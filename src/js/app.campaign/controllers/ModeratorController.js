@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-function ModeratorController ( CampaignService, $stateParams ) {
+function ModeratorController ( CampaignService ) {
 
   let vm = this;
   vm.addToModerated = addToModerated;
@@ -39,19 +39,17 @@ function ModeratorController ( CampaignService, $stateParams ) {
 
   ]
 
-
   init();
 
   function init() {
     CampaignService.getCampaign().then ( (res) => {
         vm.SingleCampaign = res.data;
-        console.log(vm.SingleCampaign);
+        console.log(vm.SingleCampaign.id);
     });
   }
 
   function addToModerated( tweet ) {
     vm.moderatedTweetList.push(tweet);
-    console.log(vm.sampleData);
     // remove moderated tweet from streaming tweet list aka sampleData
     vm.sampleData = _.reject(vm.sampleData, function(sampleTweet) {
       return sampleTweet == tweet;
@@ -60,5 +58,5 @@ function ModeratorController ( CampaignService, $stateParams ) {
 
 }
 
-ModeratorController.$inject = [ 'CampaignService', '$stateParams' ];
+ModeratorController.$inject = [ 'CampaignService' ];
 export { ModeratorController };

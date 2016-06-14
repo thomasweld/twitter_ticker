@@ -14,7 +14,7 @@ function CampaignService ( $http, $stateParams, SERVER, GOOGLE ) {
   }
 
   function getAllUserCampaigns() {
-    return $http.get(SERVER.URL + 'campaigns');
+    return $http.get(SERVER.URL + 'campaigns' + '?pageSize=50');
   }
 
   function getCampaign () {

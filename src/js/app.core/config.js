@@ -43,6 +43,11 @@ function config ($urlRouterProvider, $stateProvider, BackandProvider) {
     templateUrl: 'templates/moderator.tpl.html',
     controller: 'ModeratorController as vm'
   })
+  .state('root.live', {
+    url: '/campaigns/:campaignId/live',
+    templateUrl: 'templates/live.tpl.html',
+    controller: 'LiveCampaignController as vm'
+  })
  ;
 
 }
