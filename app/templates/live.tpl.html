@@ -1,21 +1,19 @@
 
-
-<!-- <div class="video">
-
+<div class="video">
+  Video Goes Here
 </div>
-
-<div class="row marquee-container">
-  <div class="col-sm-12 marquee">
-    <span ng-repeat="tweet in vm.moderatedTweetList">
-      <img src="{{ tweet.user.profile_image_url }}" alt="" class="streamProfilePic"/>
-      {{ tweet.user.name}} - {{ tweet.text }}
-    </span>
-  </div>
-</div> -->
-
 
 <ul>
   <li ng-repeat="tweet in vm.tweets">
     {{ tweet.text }} - @{{ tweet.user.screen_name }}
   </li>
 </ul>
+
+<div class="navbar-fixed-bottom">
+  <div class="marquee-container">
+      <span ng-repeat="tweet in vm.moderatedTweetList">
+        <img src="{{ tweet.user.profile_image_url }}" alt="" class="streamProfilePic"/>
+        {{ tweet.user.name}} - {{ tweet.text }}
+      </span>
+  </div>
+</div>

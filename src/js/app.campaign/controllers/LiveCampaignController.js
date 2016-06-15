@@ -18,19 +18,20 @@ function LiveCampaignController ( $scope, CampaignService ) {
         let tweetSwLat   = vm.SingleCampaign.swLat;
         let tweetSwLng   = vm.SingleCampaign.swLng;
 
-        vm.tweets = [];
-
-        let query = 'tag=' + tweetHashtag + '&cords=' + tweetNeLat + ',' + tweetNeLng + ',' + tweetSwLat + ',' + tweetSwLng;
-
-        let socket = io('http://tweet-stream-proxy.herokuapp.com', { query: query });
-
-        console.log(query);
-
-        socket.on('newTweet', function(tweet) {
-          $scope.$apply(function() {
-            vm.tweets.push(tweet);
-          });
-        });
+        // vm.tweets = [];
+        //
+        // let query = 'cords='  + tweetSwLat + ',' + tweetSwLng + ',' + tweetNeLat + ',' + tweetNeLng;
+        //
+        // let socket = io('http://tweet-stream-proxy.herokuapp.com', { query: query });
+        //
+        // console.log(query);
+        //
+        // socket.on('newTweet', function(tweet) {
+        //   $scope.$apply(function() {
+        //     console.log(tweet);
+        //     vm.tweets.push(tweet);
+        //   });
+        // });
     });
   }
 

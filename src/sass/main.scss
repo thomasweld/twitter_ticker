@@ -21,16 +21,18 @@ li {
   padding:3px;
   border:1px solid #e6e6e6;
   width:100%;
+  height: 150px;
   overflow:hidden;
 }
 
 .marquee{
   display:block;
   position:relative;
-  width:240%;
-  height:120px;
+  width:6000%;
   animation:scroll 14s linear infinite;
+  height: 100%;
   padding:3px;
+  font-size: 2em;
 }
 
 .marquee:hover {
@@ -39,6 +41,6 @@ li {
 
 /* Makes text move */
 @keyframes scroll{
-0% {left:140%;}
-100% {left:-140%;}
+0% {left:200%;}
+100% {left:-200%;}
 }

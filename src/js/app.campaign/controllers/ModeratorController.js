@@ -1,62 +1,79 @@
 import _ from "lodash";
+import io from 'socket.io-client';
 
-function ModeratorController ( CampaignService ) {
+
+function ModeratorController ( $scope, CampaignService, FireBaseService ) {
 
   let vm = this;
   vm.addToModerated = addToModerated;
   vm.moderatedTweetList = [];
+  vm.liveTweets = [];
 
-  vm.sampleData = [
+  let firebaseRef = [];
 
-    {
-      text: "tweet number 1 #hashtag",
-      user: {
-        name: "UserName1",
-        profile_image_url: "https://unsplash.it/400/400"
-      }
-    },
-    {
-      text: "tweet number 2 #hashtag",
-      user: {
-        name: "UserName2",
-        profile_image_url: "https://unsplash.it/400/400"
-      }
-    },
-    {
-      text: "tweet number 3 #hashtag",
-      user: {
-        name: "UserName3",
-        profile_image_url: "https://unsplash.it/400/400"
-      }
-    },
-    {
-      text: "tweet number 4 #hashtag",
-      user: {
-        name: "UserName",
-        profile_image_url: "https://unsplash.it/400/400"
-      }
-    }
-
-  ]
 
   init();
 
   function init() {
+
+
+
+
     CampaignService.getCampaign().then ( (res) => {
         vm.SingleCampaign = res.data;
         console.log(vm.SingleCampaign.id);
+
+        // firebaseRef = FireBaseService.createCampaign('campaign-' + vm.SingleCampaign.id);
+
+        // console.log(firebaseRef);
+        // let firebaseURL = 'https://twitter-ticker-d2d86.firebaseio.com';
+        // console.log(firebaseURL);
+        // let ref = new Firebase (firebaseURL);
+
+        // vm.moderatedTweetList = FireBaseService.getTweets();
+
+        let tweetHashtag = vm.SingleCampaign.hashtag;
+        let tweetSwLat   = vm.SingleCampaign.swLat;
+        let tweetSwLng   = vm.SingleCampaign.swLng;
+        let tweetNeLat   = vm.SingleCampaign.neLat;
+        let tweetNeLng   = vm.SingleCampaign.neLng;
+
+        let query = 'cords='  + tweetSwLat + ',' + tweetSwLng + ',' + tweetNeLat + ',' + tweetNeLng;
+
+        // let socket = io('http://tweet-stream-proxy.herokuapp.com', { query: query });
+        let socket = io('http://tweet-stream-sample.herokuapp.com', { query: 'cords=-74,40,-73,41' });
+
+        console.log(query);
+
+        socket.on('newTweet', function(tweet) {
+          $scope.$apply(function() {
+            console.log(tweet);
+            if (_.includes(tweet.text, tweetHashtag)){
+              vm.liveTweets.push(tweet);
+            }
+          });
+        });
+
+
     });
   }
 
   function addToModerated( tweet ) {
+
+    // FireBaseService.addTweet(vm.moderatedTweetList, tweet);
+
+    // add select tweets to moderatedTweetList
     vm.moderatedTweetList.push(tweet);
+    // add tweets to firebase fbmoderatedTweetList
     // remove moderated tweet from streaming tweet list aka sampleData
-    vm.sampleData = _.reject(vm.sampleData, function(sampleTweet) {
-      return sampleTweet == tweet;
+    vm.liveTweets = _.reject(vm.liveTweets, function(current) {
+      return current == tweet;
     });
   }
 
+
+
 }
 
-ModeratorController.$inject = [ 'CampaignService' ];
+ModeratorController.$inject = [ '$scope', 'CampaignService', 'FireBaseService' ];
 export { ModeratorController };

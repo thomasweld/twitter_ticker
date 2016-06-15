@@ -21,7 +21,7 @@
 
   <div class="row marquee-container">
     <div class="col-sm-12 marquee">
-      <span ng-repeat="tweet in vm.moderatedTweetList">
+      <span class="tweetspan" ng-repeat="tweet in vm.moderatedTweetList">
         <img src="{{ tweet.user.profile_image_url }}" alt="" class="streamProfilePic"/>
         {{ tweet.user.name}} - {{ tweet.text }}
       </span>
@@ -34,7 +34,7 @@
     <div class="col-sm-6">
       <h4>Streaming Tweets List</h4>
       <ul>
-        <li ng-repeat="tweet in vm.sampleData">
+        <li ng-repeat="tweet in vm.liveTweets">
           <img src="{{ tweet.user.profile_image_url }}" alt="" class="twitterUserImage" />
           {{ tweet.user.name}} - {{ tweet.text }}
           <button ng-click="vm.addToModerated(tweet)" class="btn btn-default" type="button">Add to ticker</button>

@@ -19,7 +19,7 @@ function NewCampaignController ( CampaignService, UserService, $state ) {
       // send campaign to DB with new attributes
       CampaignService.postNewCampaign(campaign).then( (res) => {
         console.log(res);
-        $state.go('root.home');
+        $state.go('root.campaigns');
       });
 
     });

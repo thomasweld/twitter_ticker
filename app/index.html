@@ -10,6 +10,21 @@
   </head>
   <body ng-app="app">
     <div ui-view></div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDjMXmqqYhHXwjUnmHDFsTVaAAeYO3GnmY",
+        authDomain: "twitter-ticker-d2d86.firebaseapp.com",
+        databaseURL: "https://twitter-ticker-d2d86.firebaseio.com",
+        storageBucket: "twitter-ticker-d2d86.appspot.com",
+      };
+      var fbApp = firebase.initializeApp(config);
+    </script>
+
+
     <script src="js/bundle.js"></script>
   </body>
 </html>
