@@ -1,5 +1,7 @@
 import angular from 'angular';
 import 'angularfire';
+import 'jquery';
+import '../vendor/marquee';
 
 // Import Our Constants
 import { GOOGLE } from './constants/google.api';
@@ -14,8 +16,9 @@ import { LiveCampaignController }   from './controllers/LiveCampaignController';
 import { CampaignService } from './services/CampaignService';
 import { FireBaseService }   from './services/FireBaseService';
 
+
 angular
-  .module('app.campaign', ['firebase'])
+  .module('app.campaign', ['firebase', 'angular-marquee'])
   .controller('NewCampaignController', NewCampaignController)
   .controller('CampaignsController', CampaignsController)
   .controller('ModeratorController', ModeratorController)

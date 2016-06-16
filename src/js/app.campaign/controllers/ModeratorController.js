@@ -16,9 +16,6 @@ function ModeratorController ( $scope, CampaignService, FireBaseService ) {
 
   function init() {
 
-
-
-
     CampaignService.getCampaign().then ( (res) => {
         vm.SingleCampaign = res.data;
         console.log(vm.SingleCampaign.id);
