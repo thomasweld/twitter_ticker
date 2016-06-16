@@ -5,7 +5,7 @@
 
 <div class="navbar-fixed-bottom">
   <marquee truespeed="truespeed" scrollamount="2" scrolldelay="6" >
-    <span class="tweetspan" ng-repeat="tweet in vm.moderatedTweetList">
+    <span class="tweetspan" ng-repeat="tweet in vm.liveModeratedTweetList">
       <img src="{{ tweet.user.profile_image_url }}" alt="" class="streamProfilePic"/>
       {{ tweet.user.name}} - {{ tweet.text }}
     </span>

@@ -1,9 +1,10 @@
 
 import io from 'socket.io-client';
 
-function LiveCampaignController ( $scope, CampaignService ) {
+function LiveCampaignController ( $scope, CampaignService, FirebaseService ) {
 
   let vm = this;
+  vm.liveModeratedTweetList = [];
 
   init();
 
@@ -12,30 +13,13 @@ function LiveCampaignController ( $scope, CampaignService ) {
         vm.SingleCampaign = res.data;
         console.log(vm.SingleCampaign);
 
-        let tweetHashtag = vm.SingleCampaign.hashtag;
-        let tweetNeLat   = vm.SingleCampaign.neLat;
-        let tweetNeLng   = vm.SingleCampaign.neLng;
-        let tweetSwLat   = vm.SingleCampaign.swLat;
-        let tweetSwLng   = vm.SingleCampaign.swLng;
+        vm.liveModeratedTweetList = FirebaseService.getAllModeratedTweets( vm.SingleCampaign.id );
 
-        // vm.tweets = [];
-        //
-        // let query = 'cords='  + tweetSwLat + ',' + tweetSwLng + ',' + tweetNeLat + ',' + tweetNeLng;
-        //
-        // let socket = io('http://tweet-stream-proxy.herokuapp.com', { query: query });
-        //
-        // console.log(query);
-        //
-        // socket.on('newTweet', function(tweet) {
-        //   $scope.$apply(function() {
-        //     console.log(tweet);
-        //     vm.tweets.push(tweet);
-        //   });
-        // });
+        console.log(liveModeratedTweetList);
     });
   }
 
 }
 
-LiveCampaignController.$inject = [ '$scope', 'CampaignService' ];
+LiveCampaignController.$inject = [ '$scope', 'CampaignService', 'FirebaseService' ];
 export { LiveCampaignController };

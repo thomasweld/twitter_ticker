@@ -2,14 +2,14 @@ import _ from "lodash";
 import io from 'socket.io-client';
 
 
-function ModeratorController ( $scope, CampaignService, FireBaseService ) {
+function ModeratorController ( $scope, CampaignService, FirebaseService ) {
 
   let vm = this;
   vm.addToModerated = addToModerated;
   vm.moderatedTweetList = [];
   vm.liveTweets = [];
 
-  let firebaseRef = [];
+  let ref = [];
 
 
   init();
@@ -20,14 +20,15 @@ function ModeratorController ( $scope, CampaignService, FireBaseService ) {
         vm.SingleCampaign = res.data;
         console.log(vm.SingleCampaign.id);
 
-        // firebaseRef = FireBaseService.createCampaign('campaign-' + vm.SingleCampaign.id);
+        vm.moderatedTweetList = FirebaseService.getAllModeratedTweets( vm.SingleCampaign.id );
 
-        // console.log(firebaseRef);
+        console.log(vm.moderatedTweetList);
+        // console.log(ref);
         // let firebaseURL = 'https://twitter-ticker-d2d86.firebaseio.com';
         // console.log(firebaseURL);
         // let ref = new Firebase (firebaseURL);
 
-        // vm.moderatedTweetList = FireBaseService.getTweets();
+        // vm.moderatedTweetList = FirebaseService.getTweets();
 
         let tweetHashtag = vm.SingleCampaign.hashtag;
         let tweetSwLat   = vm.SingleCampaign.swLat;
@@ -57,10 +58,10 @@ function ModeratorController ( $scope, CampaignService, FireBaseService ) {
 
   function addToModerated( tweet ) {
 
-    // FireBaseService.addTweet(vm.moderatedTweetList, tweet);
-
+    // FirebaseService.addTweet(vm.moderatedTweetList, tweet);
+    FirebaseService.addModeratedTweet (vm.moderatedTweetList, tweet);
     // add select tweets to moderatedTweetList
-    vm.moderatedTweetList.push(tweet);
+    // vm.moderatedTweetList.push(tweet);
     // add tweets to firebase fbmoderatedTweetList
     // remove moderated tweet from streaming tweet list aka sampleData
     vm.liveTweets = _.reject(vm.liveTweets, function(current) {
@@ -72,5 +73,5 @@ function ModeratorController ( $scope, CampaignService, FireBaseService ) {
 
 }
 
-ModeratorController.$inject = [ '$scope', 'CampaignService', 'FireBaseService' ];
+ModeratorController.$inject = [ '$scope', 'CampaignService', 'FirebaseService' ];
 export { ModeratorController };
