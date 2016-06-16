@@ -10,10 +10,11 @@ function NewCampaignController ( CampaignService, UserService, $state ) {
     CampaignService.getLocationCoords( campaign ).then ( (res) => {
       console.log(res);
       // assign lat / long numbers to campaign attreibutes before posting to DB
-      campaign.neLat = res.data.results[0].geometry.viewport.northeast.lat;
-      campaign.neLng = res.data.results[0].geometry.viewport.northeast.lng;
-      campaign.swLat = res.data.results[0].geometry.viewport.southwest.lat;
-      campaign.swLng = res.data.results[0].geometry.viewport.southwest.lng;
+      campaign.neLat = res.data.results[0].geometry.viewport.northeast.lat.toFixed(2);
+      campaign.neLng = res.data.results[0].geometry.viewport.northeast.lng.toFixed(2);
+      campaign.swLat = res.data.results[0].geometry.viewport.southwest.lat.toFixed(2);
+      campaign.swLng = res.data.results[0].geometry.viewport.southwest.lng.toFixed(2);
+
       // assign user to campaign before posting to DB
       campaign.user = UserService.getUserId();
       // send campaign to DB with new attributes
