@@ -80,7 +80,7 @@
         <li ng-repeat="tweet in vm.moderatedTweetList">
           <img src="{{ tweet.user.profile_image_url }}" alt="" class="twitterUserImage" />
           {{ tweet.user.name}} - {{ tweet.text }}
-          <button ng-click="vm.addToModerated(tweet)" class="btn btn-default" type="button">Add to ticker</button>
+          <button ng-click="vm.removeModeratedTweet(tweet)" class="btn btn-default" type="button">Delete</button>
         </li>
       </ul>
     </div>

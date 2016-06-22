@@ -36,12 +36,17 @@ function ModeratorController ( $scope, CampaignService, FirebaseService ) {
         let tweetNeLat   = vm.SingleCampaign.neLat;
         let tweetNeLng   = vm.SingleCampaign.neLng;
 
-        let query = 'cords='  + tweetSwLat + ',' + tweetSwLng + ',' + tweetNeLat + ',' + tweetNeLng;
+        let query = 'coords='  + tweetSwLng + ',' + tweetSwLat + ',' + tweetNeLng + ',' + tweetNeLat;
 
+        // Twitter data proxies
+        // tim twitter proxy
         // let socket = io('http://tweet-stream-proxy.herokuapp.com', { query: query });
+
+        // sample data proxy
         let socket = io('http://tweet-stream-sample.herokuapp.com', { query: 'cords=-74,40,-73,41' });
 
-        console.log(query);
+        // thomas twitter proxy
+        // let socket = io('http://twitter-proxie.herokuapp.com', { query: query });
 
         socket.on('newTweet', function(tweet) {
           $scope.$apply(function() {
@@ -67,6 +72,10 @@ function ModeratorController ( $scope, CampaignService, FirebaseService ) {
     vm.liveTweets = _.reject(vm.liveTweets, function(current) {
       return current == tweet;
     });
+  }
+
+  function removeModeratedTweet( tweet ) {
+    FirebaseService.removeModeratedTweet (vm.moderatedTweetList, tweet);
   }
 
 

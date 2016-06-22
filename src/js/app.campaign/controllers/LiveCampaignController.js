@@ -1,7 +1,7 @@
 
 import io from 'socket.io-client';
 
-function LiveCampaignController ( $scope, CampaignService, FirebaseService ) {
+function LiveCampaignController ( CampaignService, FirebaseService ) {
 
   let vm = this;
   vm.liveModeratedTweetList = [];
@@ -15,11 +15,11 @@ function LiveCampaignController ( $scope, CampaignService, FirebaseService ) {
 
         vm.liveModeratedTweetList = FirebaseService.getAllModeratedTweets( vm.SingleCampaign.id );
 
-        console.log(liveModeratedTweetList);
+        console.log(vm.liveModeratedTweetList);
     });
   }
 
 }
 
-LiveCampaignController.$inject = [ '$scope', 'CampaignService', 'FirebaseService' ];
+LiveCampaignController.$inject = [ 'CampaignService', 'FirebaseService' ];
 export { LiveCampaignController };
