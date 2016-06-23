@@ -43,10 +43,10 @@ function ModeratorController ( $scope, CampaignService, FirebaseService ) {
         // let socket = io('http://tweet-stream-proxy.herokuapp.com', { query: query });
 
         // sample data proxy
-        let socket = io('http://tweet-stream-sample.herokuapp.com', { query: 'cords=-74,40,-73,41' });
+        // let socket = io('http://tweet-stream-sample.herokuapp.com', { query: 'cords=-74,40,-73,41' });
 
         // thomas twitter proxy
-        // let socket = io('http://twitter-proxie.herokuapp.com', { query: query });
+        let socket = io('http://twitter-proxie.herokuapp.com', { query: query });
 
         socket.on('newTweet', function(tweet) {
           $scope.$apply(function() {
